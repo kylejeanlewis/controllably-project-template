@@ -1,13 +1,19 @@
 from pathlib import Path
 import sys
-REPO = 'phbot-v2'
+REPO = 'my-repo'
 ROOT = str(Path().absolute()).split(REPO)[0]
 sys.path.append(f'{ROOT}{REPO}')
 
-from controllably import Helper, Factory
+from controllably import Helper
 Helper.get_ports()
 
-library = Helper.read_yaml(f'{ROOT}{REPO}\\library\\catalogue.yaml')
-"""File reference for layout and config files"""
-Helper.update_root_directory(library, REPO)
-library = Factory.DottableDict(library)
+registry = Helper.read_yaml(f'{ROOT}{REPO}\\tools\\registry.yaml')
+"""Registry of device addresses"""
+addresses = registry['machine_id'][Helper.get_node()]
+"""Device addresses for this machine"""
+
+# Import plugins
+from library.plugins.my_plugin import MyClass
+
+# Define utility functions
+...
