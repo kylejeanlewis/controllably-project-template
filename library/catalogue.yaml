@@ -1,5 +1,0 @@
-# Dictionary labels should be valid variable names
-deck:
-  deck_0: phbot-v2/library/deck/layout.json
-labware:
-  labware_0: phbot-v2/library/labware/labware.json
